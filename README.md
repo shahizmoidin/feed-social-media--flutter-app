@@ -36,6 +36,20 @@ Feed is a social media application built using Flutter. This app allows users to
 - Firebase Account: [Firebase Console](https://console.firebase.google.com/)
 - Google Cloud Project: [Google Cloud Console](https://console.cloud.google.com/)
 
+### Download
+
+Download the latest release [APK](https://github.com/shahizmoidin/feed-social-media--flutter-app/releases/tag/v1.0.0) here.
+
+### Contributing
+**We welcome contributions to enhance the Feed app. To contribute**:
+
+- Fork the repository.
+- Create a new branch (git checkout -b feature-branch).
+- Make your changes and commit them (git commit -m 'Add new feature').
+- Push to the branch (git push origin feature-branch).
+- Open a pull request.
+
+
 ### Installation
 
 1. **Clone the repository**
@@ -43,4 +57,7 @@ Feed is a social media application built using Flutter. This app allows users to
    git clone https://github.com/shahizmoidin/feed-social-media--flutter-app.git
    cd feed-social-media--flutter-app
    flutter pub get
-   flutter run
+   flutter run```
+
+
+
