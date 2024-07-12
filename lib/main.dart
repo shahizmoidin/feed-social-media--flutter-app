@@ -12,13 +12,16 @@ import 'package:routemaster/routemaster.dart';
 
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
-  runApp(const  ProviderScope(child:  MyApp()),);
+  );
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
+
 class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
@@ -28,34 +31,35 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   UserModel? userModel;
-  void getData(WidgetRef ref,User data)async{
-    userModel=await ref.watch(authControllerProvider.notifier).getUserData(data.uid).first;
+  void getData(WidgetRef ref, User data) async {
+    userModel = await ref
+        .watch(authControllerProvider.notifier)
+        .getUserData(data.uid)
+        .first;
     ref.read(userProvider.notifier).update((state) => userModel);
-    setState(() {
-      
-    });
+    setState(() {});
   }
-  
 
   @override
   Widget build(BuildContext context) {
-    return ref.watch(authStateChangeProvider).when(data: (data)=>MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'feed',
-      theme: ref.watch(themeNotifierProvider),
-       routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
-        if(data!=null){
-         getData(ref, data);
-         if(userModel!=null){
-          return loggedInRoute;
-         }
-         
-        }
-        return loggedOutRoute;
-       }),
-       routeInformationParser: const RoutemasterParser(),
-    ), error: (error,stackTrace)=>ErrorText(error: error.toString()), loading: ()=>const Loader(),);
+    return ref.watch(authStateChangeProvider).when(
+          data: (data) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'feed',
+            theme: ref.watch(themeNotifierProvider),
+            routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
+              if (data != null) {
+                getData(ref, data);
+                if (userModel != null) {
+                  return loggedInRoute;
+                }
+              }
+              return loggedOutRoute;
+            }),
+            routeInformationParser: const RoutemasterParser(),
+          ),
+          error: (error, stackTrace) => ErrorText(error: error.toString()),
+          loading: () => const Loader(),
+        );
   }
 }
-
-

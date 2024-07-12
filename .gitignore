@@ -42,3 +42,25 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# iOS related
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/engine
+ios/Flutter/flutter_assets
+Pods/
+Podfile.lock
+# Xcode
+xcuserdata/
+
+# Android related
+local.properties
+.gradle
+
+# Keystore files
+*.jks
+
+# IDE related
+*.iml
+.idea
+.DS_Store
